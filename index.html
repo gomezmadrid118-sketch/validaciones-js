@@ -28,8 +28,41 @@
                 <label for="correo">Correo:</label>
                 <input type="text" id="correo">
                 <small id="errorCorreo"></small>
+
+                <label for="telefono">Telefono:</label>
+                <input type="text" id="telefono">
+                <small id="errorTelefono"></small>
+
+                <label for="edad">Edad:</label>
+                <input type="text" id="edad">
+                <small id="errorEdad"></small>
+
+                <label for="contrasena">Contraseña:</label>
+                <input type="text" id="contrasena">
+                <small id="errorContrasena"></small>
+
+                <label for="confirmar">Confirmar contraseña:</label>
+                <input type="text" id="confirmar">
+                <small id="errorConfirmar"></small>
+
+                <label for="programa">Programa de formación:</label>
+                <select name="" id="programa">
+                    <option value="">Seleccione un programa</option>
+                    <option value="ADSO">Analisis y desarrollo de software</option>
+                    <option value="Multimedia">Producción multimedia</option>
+                    <option value="Redes">Gestión de redes</option>
+                </select>
+                <small id="errorPrograma"></small>
+
+                <label for="terminos">
+                    <input type="checkbox" id="terminos">
+                    Acepto los terminos y condiciones
+                </label>
+                <small id="errorTerminos"></small>
             </div>
 
+            <button type="submit" id="btnRegistrar">Registrar estudiante</button>
+            <p id="mensajeFinal"></p>
         </form>
     </main>
     <script src="js/index.js"></script>
