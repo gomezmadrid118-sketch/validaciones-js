@@ -54,7 +54,8 @@ label {
     font-weight: 600;
 }
 
-input {
+input,
+select {
     width: 100%;
     padding: 13px 15px;
     border: 1px solid #bfdbfe;
@@ -66,11 +67,27 @@ input {
     transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
+select {
+    appearance: none;
+    padding-right: 42px;
+    background-color: #f8fbff;
+    background-image:
+        linear-gradient(45deg, transparent 50%, #2563eb 50%),
+        linear-gradient(135deg, #2563eb 50%, transparent 50%);
+    background-position:
+        calc(100% - 19px) 50%,
+        calc(100% - 13px) 50%;
+    background-repeat: no-repeat;
+    background-size: 6px 6px, 6px 6px;
+    cursor: pointer;
+}
+
 input::placeholder {
     color: #94a3b8;
 }
 
-input:focus {
+input:focus,
+select:focus {
     border-color: #2563eb;
     background: #ffffff;
     box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.14);
@@ -80,6 +97,39 @@ small {
     min-height: 18px;
     color: #dc2626;
     font-size: 0.82rem;
+}
+
+button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 13px 15px;
+    border: 0;
+    border-radius: 10px;
+    color: #ffffff;
+    background: #2563eb;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+    background: #1d4ed8;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+#mensajeFinal {
+    margin: 16px 0 0;
+    text-align: center;
+}
+
+#mensajeFinal.exito {
+    color: #15803d;
+    font-weight: 600;
 }
 
 @media (max-width: 480px) {

@@ -11,7 +11,10 @@ function validarNombre(){
     }
 }
 
-document.getElementById('nombre').addEventListener('input', validarNombre);
+document.getElementById('nombre').addEventListener('input', () => {
+    validarNombre();
+    validarFormulario();
+});
 
 function validarApellidos(){
     const apellidos = document.getElementById('apellidos').value.trim();
@@ -26,7 +29,10 @@ function validarApellidos(){
     }
 }
 
-document.getElementById('apellidos').addEventListener('input', validarApellidos);
+document.getElementById('apellidos').addEventListener('input', () => {
+    validarApellidos();
+    validarFormulario();
+});
 
 function validarDocumento(){
     const documento = document.getElementById('documento').value.trim();
@@ -41,7 +47,10 @@ function validarDocumento(){
     }
 }
 
-document.getElementById('documento').addEventListener('input', validarDocumento);
+document.getElementById('documento').addEventListener('input', () => {
+    validarDocumento();
+    validarFormulario();
+});
 
 function validarCorreo() {
     const correo = document.getElementById('correo').value.trim();
@@ -56,7 +65,10 @@ function validarCorreo() {
     }
 }
 
-document.getElementById('correo').addEventListener('input', validarCorreo);
+document.getElementById('correo').addEventListener('input', () => {
+    validarCorreo();
+    validarFormulario();
+});
 
 function validarTelefono() {
    const telefono = document.getElementById('telefono').value.trim();
@@ -72,10 +84,13 @@ function validarTelefono() {
 }
 
 
-document.getElementById('telefono').addEventListener('input', validarTelefono);
+document.getElementById('telefono').addEventListener('input', () => {
+    validarTelefono();
+    validarFormulario();
+});
 
 function validarEdad() {
-   const edad = document.getElementById('telefono').value.trim();
+   const edad = document.getElementById('edad').value.trim();
     const errorEdad = document.getElementById('errorEdad');
     
     if(isNaN(edad) || edad < 18 || edad > 60){
@@ -88,7 +103,10 @@ function validarEdad() {
 }
 
 
-document.getElementById('edad').addEventListener('input', validarEdad);
+document.getElementById('edad').addEventListener('input', () => {
+    validarEdad();
+    validarFormulario();
+});
 
 function validarContrasena() {
    const contrasena = document.getElementById('contrasena').value.trim();
@@ -104,7 +122,10 @@ function validarContrasena() {
 }
 
 
-document.getElementById('contrasena').addEventListener('input', validarContrasena);
+document.getElementById('contrasena').addEventListener('input', () => {
+    validarContrasena();
+    validarFormulario();
+});
 
 function validarConfirmarContrasena() {
     const confirmar = document.getElementById('confirmar').value.trim();
@@ -121,7 +142,10 @@ function validarConfirmarContrasena() {
 }
 
 
-document.getElementById('confirmar').addEventListener('input', validarConfirmarContrasena);
+document.getElementById('confirmar').addEventListener('input', () => {
+    validarConfirmarContrasena();
+    validarFormulario();
+});
 
 function validarPrograma(){
     const programa = document.getElementById('programa').value.trim();
@@ -136,7 +160,10 @@ function validarPrograma(){
     }
 }
 
-document.getElementById('programa').addEventListener('change', validarPrograma);
+document.getElementById('programa').addEventListener('change', () => {
+    validarPrograma();
+    validarFormulario();
+});
 
 function validarTerminos(){
     const terminos = document.getElementById('terminos').checked;
@@ -151,4 +178,43 @@ function validarTerminos(){
     }
 }
 
-document.getElementById('terminos').addEventListener('change', validarTerminos);
+document.getElementById('terminos').addEventListener('change', () => {
+    validarTerminos();
+    validarFormulario();
+});
+
+function validarFormulario() {
+    const validaciones = [
+        validarNombre(),
+        validarApellidos(),
+        validarDocumento(),
+        validarCorreo(),
+        validarTelefono(),
+        validarEdad(),
+        validarContrasena(),
+        validarConfirmarContrasena(),
+        validarPrograma(),
+        validarTerminos()
+    ];
+    const resultado = validaciones.every(Boolean);
+    document.getElementById('btnRegistrar').disabled = !resultado;
+    return resultado;
+}
+
+function enviarFormulario(event) {
+    event.preventDefault();
+
+    if (!validarFormulario()) {
+        return;
+    }
+
+    const formulario = document.getElementById('formulario');
+    const mensajeFinal = document.getElementById('mensajeFinal');
+    mensajeFinal.textContent = '¡Estudiante registrado correctamente!';
+    mensajeFinal.className = 'exito';
+    formulario.reset();
+    document.getElementById('btnRegistrar').disabled = true;
+}
+
+document.getElementById('formulario').addEventListener('submit', enviarFormulario);
+document.getElementById('btnRegistrar').disabled = true;
